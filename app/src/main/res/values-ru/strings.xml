@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Погода</string>
+    <string name="localityChoice">Текущее местоположение</string>
+    <string name="temperature"> T </string>
+    <string name="oneDay">1 день</string>
+    <string name="threeDays">3 дня</string>
+    <string name="week">неделя</string>
+    <string name="hintLocation">Введите местоположение</string>
+    <string name="nightModeSwitch">Ночной режим</string>
+    <string name="cBoxPressure">Атмосферное давление</string>
+    <string name="cBoxWindSpeed">Скорость ветра</string>
+    <string name="settingsBtnDescription">Настройки</string>
+    <string name="infoLink"><a>Дополнительная информация</a></string>
+    <string name="link">https://ru.wikipedia.org/wiki/</string>
+
+    <string name="oneDay_blank_fragment">oneDay_blank_fragment</string>
+    <string name="threeDay_blank_fragment">threeDay_blank_fragment</string>
+    <string name="week_blank_fragment">week_blank_fragment</string>
+</resources>
