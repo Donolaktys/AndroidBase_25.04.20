@@ -2,11 +2,14 @@ package ru.geekbrains.meteoapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class LocationActivity extends AppCompatActivity implements Constants {
     private EditText enterLocation;
@@ -16,6 +19,10 @@ public class LocationActivity extends AppCompatActivity implements Constants {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
         enterLocation = findViewById(R.id.enterLocation);
+
+        String[] cities = getResources().getStringArray(R.array.cities);
+
+        initList(cities);
 
         enterLocation.setOnKeyListener((v, actionId, event) -> {
             if( event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER){
@@ -28,4 +35,24 @@ public class LocationActivity extends AppCompatActivity implements Constants {
             return false;
         });
     }
+
+    private void initList(String[] cities) {
+        RecyclerView recyclerView = findViewById(R.id.viewCities);
+
+        recyclerView.setHasFixedSize(true);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        StringArrayAdapter adapter = new StringArrayAdapter(cities, R.layout.item_cities);
+        recyclerView.setAdapter(adapter);
+
+        adapter.SetOnItemClickListener(new StringArrayAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                enterLocation.setText(((TextView) view).getText());
+            }
+        });
+    }
+
 }

@@ -56,14 +56,15 @@
             android:text="@string/infoLink" />
     </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/mainFragmentView"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mainViewDay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@color/backGr">
+        android:background="@color/backGr"
+        tools:listitem="@layout/item_view_day">
 
-    </FrameLayout>
+    </android.support.v7.widget.RecyclerView>
 
     <LinearLayout
         style="?android:attr/buttonBarStyle"
@@ -98,6 +99,7 @@
 
         <ImageButton
             android:id="@+id/settingsBtn"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

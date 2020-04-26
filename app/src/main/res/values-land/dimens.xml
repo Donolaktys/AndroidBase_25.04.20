@@ -4,4 +4,5 @@
     <dimen name="temperature">80sp</dimen>
     <dimen name="measure">35sp</dimen>
     <dimen name="fragment">50sp</dimen>
+    <dimen name="sizeItemCity">30sp</dimen>
 </resources>
