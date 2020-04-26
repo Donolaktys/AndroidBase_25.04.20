@@ -1,7 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textSize="@dimen/sizeItemViewDay">
+    app:cardCornerRadius="15dp"
+    app:cardElevation="3dp">
 
-</TextView>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/dayOfTheWeek"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="dayOfTheWeek" />
+
+            <TextView
+                android:id="@+id/itemDate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="itemDate" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/itemOvercast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Overcast" />
+
+            <ImageView
+                android:id="@+id/imageViewOvercast"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                app:srcCompat="@drawable/sunny" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/itemPhenomena"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="Phenomena" />
+
+            <ImageView
+                android:id="@+id/imageViewPhenomena"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                app:srcCompat="@drawable/rain" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/itemTextHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Humidity %" />
+
+            <TextView
+                android:id="@+id/itemDataHumidity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="45" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
