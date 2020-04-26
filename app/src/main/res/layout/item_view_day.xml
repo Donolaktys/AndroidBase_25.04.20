@@ -1,93 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tableLayout1"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:cardCornerRadius="15dp"
-    app:cardElevation="3dp">
+    android:layout_height="match_parent"
+    android:shrinkColumns="*"
+    android:stretchColumns="*">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+        <TextView
+            android:id="@+id/itemDayOfTheWeek"
+            android:text="dayOfTheWeek"
+            android:textStyle="bold"
+            android:typeface="serif">
+        </TextView>
 
-            <TextView
-                android:id="@+id/dayOfTheWeek"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="dayOfTheWeek" />
+        <TextView
+            android:id="@+id/itemDate"
+            android:gravity="center_horizontal"
+            android:text="itemDate">
+        </TextView>
+    </TableRow>
 
-            <TextView
-                android:id="@+id/itemDate"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="itemDate" />
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/itemConditions"
+            android:text="Conditions"
+            android:textStyle="bold"
+            android:typeface="serif">
+        </TextView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/imageViewConditions"
+            android:src="@drawable/sunny">
+        </ImageView>
+    </TableRow>
 
-            <TextView
-                android:id="@+id/itemOvercast"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Overcast" />
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imageViewOvercast"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/sunny" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/itemDayHigh"
+            android:text="DayHigh"
+            android:textStyle="bold"
+            android:typeface="serif">
+        </TextView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <TextView
+            android:id="@+id/itemDayHighTemp"
+            android:gravity="center_horizontal"
+            android:text="28°F">
+        </TextView>
+    </TableRow>
 
-            <TextView
-                android:id="@+id/itemPhenomena"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="Phenomena" />
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imageViewPhenomena"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/rain" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/itemDayLow"
+            android:text="DayLow"
+            android:textStyle="bold"
+            android:typeface="serif">
+        </TextView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <TextView
+            android:id="@+id/itemDayHighLow"
+            android:gravity="center_horizontal"
+            android:text="19°F">
+        </TextView>
+    </TableRow>
 
-            <TextView
-                android:id="@+id/itemTextHumidity"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Humidity %" />
+    <TableRow
+        android:id="@+id/tableRow5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/itemDataHumidity"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="45" />
-        </LinearLayout>
-    </LinearLayout>
-</android.support.v7.widget.CardView>
+        <TextView
+            android:id="@+id/itemTextHumidity"
+            android:text="Humidity %"
+            android:textStyle="bold"
+            android:typeface="serif">
+        </TextView>
+
+        <TextView
+            android:id="@+id/itemDataHumidity"
+            android:gravity="center_horizontal"
+            android:text="45">
+        </TextView>
+    </TableRow>
+</TableLayout>

@@ -45,17 +45,17 @@ public class MainActivity extends AppCompatActivity implements Constants {
         //единица измерения по умолчанию
         measure.setText(MEASUREMENT_FAHRENHEIT);
 
-        String[] cities = getResources().getStringArray(R.array.viewDay);
-
-        RecyclerView recyclerView = findViewById(R.id.mainViewDay);
-
-        recyclerView.setHasFixedSize(true);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
-        ReViewAdapter adapter = new ReViewAdapter(cities, R.layout.item_view_day);
-        recyclerView.setAdapter(adapter);
+//        String[] cities = getResources().getStringArray(R.array.viewDay);
+//
+//        RecyclerView recyclerView = findViewById(R.id.mainViewDay);
+//
+//        recyclerView.setHasFixedSize(true);
+//
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+//        recyclerView.setLayoutManager(layoutManager);
+//
+//        MyAdapter adapter = new MyAdapter(cities, R.layout.item_view_day);
+//        recyclerView.setAdapter(adapter);
 
         //обработка нажатия кнопок на первом экране
         //

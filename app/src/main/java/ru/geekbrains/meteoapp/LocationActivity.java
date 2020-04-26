@@ -44,10 +44,10 @@ public class LocationActivity extends AppCompatActivity implements Constants {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        StringArrayAdapter adapter = new StringArrayAdapter(cities, R.layout.item_cities);
+        MyAdapter adapter = new MyAdapter(cities, R.layout.item_cities);
         recyclerView.setAdapter(adapter);
 
-        adapter.SetOnItemClickListener(new StringArrayAdapter.OnItemClickListener() {
+        adapter.SetOnItemClickListener(new MyAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 enterLocation.setText(((TextView) view).getText());
