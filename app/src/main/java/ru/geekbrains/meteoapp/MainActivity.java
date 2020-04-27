@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements Constants {
 //        weekFragment = new WeekFragment();
 
         //единица измерения по умолчанию
-        measure.setText(MEASUREMENT_FAHRENHEIT);
+        measure.setText(getApplicationContext().getString(R.string.MEASUREMENT_FAHRENHEIT));
 
 //        String[] cities = getResources().getStringArray(R.array.viewDay);
 //
