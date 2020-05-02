@@ -17,11 +17,12 @@
     <string name="oneDay_blank_fragment">oneDay_blank_fragment</string>
     <string name="threeDay_blank_fragment">threeDay_blank_fragment</string>
     <string name="week_blank_fragment">week_blank_fragment</string>
-    <string name="dayOfTheWeek">dayOfTheWeek</string>
-    <string name="itemDate">itemDate</string>
-    <string name="itemConditions">Conditions</string>
-    <string name="itemDayHigh">Day High</string>
+    <string name="date">Date</string>
+    <string name="conditions">Conditions</string>
+    <string name="dayHigh">Day High</string>
     <string name="dataDayHigh">28</string>
     <string name="dayLow">Day Low</string>
-    <string name="itemHumidity">Humidity %</string>
+    <string name="dataDayLow">19</string>
+    <string name="humidity">Humidity %</string>
+    <string name="dataHumidity">45</string>
 </resources>

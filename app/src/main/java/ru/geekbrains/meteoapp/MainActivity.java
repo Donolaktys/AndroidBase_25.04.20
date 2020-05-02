@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,9 +16,6 @@ public class MainActivity extends AppCompatActivity implements Constants {
     private TextView localityChoice;
     private TextView temperature;
     private TextView measure;
-//    private OneDayFragment oneDayFragment;
-//    private ThreeDaysFragment threeDaysFragment;
-//    private WeekFragment weekFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,24 +33,11 @@ public class MainActivity extends AppCompatActivity implements Constants {
         Button weekBtn = findViewById(R.id.weekBtn);
         TextView infoLink = findViewById(R.id.infoLink);
         String link = getApplicationContext().getString(R.string.link);
-//        oneDayFragment = new OneDayFragment();
-//        threeDaysFragment = new ThreeDaysFragment();
-//        weekFragment = new WeekFragment();
 
         //единица измерения по умолчанию
         measure.setText(getApplicationContext().getString(R.string.MEASUREMENT_FAHRENHEIT));
 
-//        String[] cities = getResources().getStringArray(R.array.viewDay);
-//
-//        RecyclerView recyclerView = findViewById(R.id.mainViewDay);
-//
-//        recyclerView.setHasFixedSize(true);
-//
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-//        recyclerView.setLayoutManager(layoutManager);
-//
-//        MyAdapter adapter = new MyAdapter(cities, R.layout.item_view_day);
-//        recyclerView.setAdapter(adapter);
+        initDayView(1);
 
         //обработка нажатия кнопок на первом экране
         //
@@ -74,17 +56,17 @@ public class MainActivity extends AppCompatActivity implements Constants {
         //обработка нажатия кнопок выбора вариантов отображения
         oneDayBtn.setOnClickListener(v -> {
             MakeLog.click(this, "\"1 день\"");
-//            replaceFragment(oneDayFragment);
+            initDayView(1);
         });
 
         threeDaysBtn.setOnClickListener(v -> {
             MakeLog.click(this, "\"3 дня\"");
-//            replaceFragment(threeDaysFragment);
+            initDayView(3);
         });
 
         weekBtn.setOnClickListener(v -> {
             MakeLog.click(this, "\"неделя\"");
-//            replaceFragment(weekFragment);
+            initDayView(7);
         });
 
         // нажатие на кнопку настроек, переход на экран настройки приложения
@@ -94,12 +76,6 @@ public class MainActivity extends AppCompatActivity implements Constants {
             startActivity(settingsIntent);
         });
     }
-
-//    private void replaceFragment(Fragment fragment) {
-//        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//        fragmentTransaction.replace(R.id.mainFragmentView, fragment);
-//        fragmentTransaction.commit();
-//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -133,4 +109,13 @@ public class MainActivity extends AppCompatActivity implements Constants {
         MakeLog.lifeCycle(this, "MAIN Восстановление данных");
     }
 
+    private void initDayView(int numberOfDays) {
+        RecyclerView recyclerView = findViewById(R.id.mainViewDay);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        DayViewAdapter adapter = new DayViewAdapter(numberOfDays);
+        recyclerView.setAdapter(adapter);
+    }
 }

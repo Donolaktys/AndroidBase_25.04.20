@@ -7,26 +7,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class AdapterForStringList extends RecyclerView.Adapter<AdapterForStringList.ViewHolder> {
     private String[] dataSource;
     private int itemLayoutID;
     private OnItemClickListener itemClickListener;
 
-    public MyAdapter(String[] dataSource, int itemLayoutID){
+    public AdapterForStringList(String[] dataSource, int itemLayoutID){
         this.dataSource = dataSource;
         this.itemLayoutID = itemLayoutID;
     }
 
     @NonNull
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public AdapterForStringList.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(itemLayoutID, viewGroup, false);
-        return new MyAdapter.ViewHolder(v);
+        return new AdapterForStringList.ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyAdapter.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull AdapterForStringList.ViewHolder viewHolder, int i) {
         viewHolder.getTextView().setText(dataSource[i]);
     }
 
