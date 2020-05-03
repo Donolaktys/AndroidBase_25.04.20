@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements Constants {
     private TextView localityChoice;
     private TextView temperature;
     private TextView measure;
+    private DividerItemDecoration itemDecoration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements Constants {
         String link = getApplicationContext().getString(R.string.link);
 
         //единица измерения по умолчанию
-        measure.setText(getApplicationContext().getString(R.string.MEASUREMENT_FAHRENHEIT));
+        measure.setText(getApplicationContext().getText(R.string.MEASUREMENT_CELSIUS));
 
         initDayView(1);
 
@@ -117,5 +119,11 @@ public class MainActivity extends AppCompatActivity implements Constants {
 
         DayViewAdapter adapter = new DayViewAdapter(numberOfDays);
         recyclerView.setAdapter(adapter);
+
+        if (itemDecoration == null) {
+            itemDecoration = new DividerItemDecoration(this,  LinearLayoutManager.VERTICAL);
+            itemDecoration.setDrawable(getDrawable(R.drawable.day_view_decorator));
+            recyclerView.addItemDecoration(itemDecoration);
+        }
     }
 }

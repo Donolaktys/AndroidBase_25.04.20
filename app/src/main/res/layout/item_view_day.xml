@@ -14,62 +14,62 @@
         android:orientation="horizontal"
         android:padding="5dp">
 
-            <TextClock
-                android:id="@+id/dataDate"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="center_horizontal"
-                android:format12Hour="MMMM dd"
-                android:format24Hour="MMMM dd" />
+        <TextClock
+            android:id="@+id/dataDate"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_horizontal|center_vertical"
+            android:format12Hour="MMMM dd"
+            android:format24Hour="MMMM dd" />
 
 
-            <ImageView
-                android:id="@+id/dataImageConditions"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                app:srcCompat="@drawable/sunny" />
+        <ImageView
+            android:id="@+id/dataImageConditions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center_horizontal|center_vertical"
+            app:srcCompat="@drawable/sunny" />
 
-            <TextView
-                android:id="@+id/dataDayHigh"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:text="@string/dataDayHigh" />
+        <TextView
+            android:id="@+id/dataDayHigh"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end|center"
+            android:text="@string/dataDayHigh" />
 
-            <TextView
-                android:id="@+id/dataDayHighMeasure"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="start"
-                android:text="@string/MEASUREMENT_FAHRENHEIT" />
+        <TextView
+            android:id="@+id/dataDayHighMeasure"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="start|center_vertical"
+            android:text="@string/MEASUREMENT_FAHRENHEIT" />
 
-            <TextView
-                android:id="@+id/dataDayLow"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:text="@string/dataDayLow" />
+        <TextView
+            android:id="@+id/dataDayLow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end|center_vertical"
+            android:text="@string/dataDayLow" />
 
-            <TextView
-                android:id="@+id/dataDayLowMeasure"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="start"
-                android:text="@string/MEASUREMENT_FAHRENHEIT" />
+        <TextView
+            android:id="@+id/dataDayLowMeasure"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="start|center_vertical"
+            android:text="@string/MEASUREMENT_FAHRENHEIT" />
 
-            <TextView
-                android:id="@+id/dataHumidity"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:layout_weight="2"
-                android:text="@string/dataHumidity" />
+        <TextView
+            android:id="@+id/dataHumidity"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_weight="2"
+            android:text="@string/dataHumidity" />
     </LinearLayout>
 </android.support.v7.widget.CardView>
