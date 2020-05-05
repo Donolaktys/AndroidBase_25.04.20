@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +23,10 @@ public class MainActivity extends AppCompatActivity implements Constants {
     private DividerItemDecoration itemDecoration;
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
+    private OneDayFragment oneDayFragment;
+    private ThreeDaysFragment threeDaysFragment;
+    private WeekFragment weekFragment;
+    private FragmentManager daysFragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +44,22 @@ public class MainActivity extends AppCompatActivity implements Constants {
         Button weekBtn = findViewById(R.id.weekBtn);
         TextView infoLink = findViewById(R.id.infoLink);
         String link = getApplicationContext().getString(R.string.link);
-        recyclerView = findViewById(R.id.mainViewDay);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        daysFragmentManager = getSupportFragmentManager();
+        oneDayFragment = new OneDayFragment();
+        threeDaysFragment = new ThreeDaysFragment();
+        weekFragment = new WeekFragment();
+
+
 
         //единица измерения по умолчанию
         measure.setText(getApplicationContext().getText(R.string.MEASUREMENT_CELSIUS));
 
-        initDayView(1);
+        if (savedInstanceState == null) {
+            FragmentTransaction fragmentTransaction = daysFragmentManager
+                    .beginTransaction();
+            fragmentTransaction.add(R.id.mainFragmentView, oneDayFragment);
+            fragmentTransaction.commit();
+        }
 
         //обработка нажатия кнопок на первом экране
         //
@@ -64,25 +78,31 @@ public class MainActivity extends AppCompatActivity implements Constants {
         //обработка нажатия кнопок выбора вариантов отображения
         oneDayBtn.setOnClickListener(v -> {
             MakeLog.click(this, "\"1 день\"");
-            initDayView(1);
+            replaceFragment(oneDayFragment);
         });
 
         threeDaysBtn.setOnClickListener(v -> {
             MakeLog.click(this, "\"3 дня\"");
-            initDayView(3);
+            replaceFragment(threeDaysFragment);
         });
 
         weekBtn.setOnClickListener(v -> {
             MakeLog.click(this, "\"неделя\"");
-            initDayView(7);
+            replaceFragment(weekFragment);
         });
 
-        // нажатие на кнопку настроек, переход на экран настройки приложения
+        // нажатие на кнопку настроек, переход на экран настройки приложения*
         settingsBtn.setOnClickListener(v -> {
             MakeLog.click(this, "\"Настройки\"");
             Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(settingsIntent);
         });
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.mainFragmentView, fragment);
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -115,14 +135,5 @@ public class MainActivity extends AppCompatActivity implements Constants {
         temperature.setText(savedInstanceState.getString(TEMPERATURE_LABEL));
         measure.setText(savedInstanceState.getString(MEASURE_LABEL));
         MakeLog.lifeCycle(this, "MAIN Восстановление данных");
-    }
-
-    private void initDayView(int numberOfDays) {
-        DayViewAdapter adapter = new DayViewAdapter(numberOfDays);
-        recyclerView.setAdapter(adapter);
-
-        itemDecoration = new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
-        itemDecoration.setDrawable(getDrawable(R.drawable.day_view_decorator));
-        recyclerView.addItemDecoration(itemDecoration);
     }
 }

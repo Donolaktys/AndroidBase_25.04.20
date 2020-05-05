@@ -2,6 +2,8 @@ package ru.geekbrains.meteoapp;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +14,16 @@ import android.view.ViewGroup;
  */
 public class WeekFragment extends Fragment {
 
-    public WeekFragment() {
-        // Required empty public constructor
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_week, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_three_days, container, false);
+        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.fragmentViewThreeDay);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+        DayViewAdapter adapter = new DayViewAdapter(7);
+        recyclerView.setAdapter(adapter);
+        return rootView;
     }
 }

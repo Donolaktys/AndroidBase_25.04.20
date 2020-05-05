@@ -102,15 +102,15 @@
 
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/mainViewDay"
+
+    <FrameLayout
+        android:id="@+id/mainFragmentView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@color/backGr"
-        tools:listitem="@layout/item_view_day">
+        android:background="@color/backGr">
 
-    </android.support.v7.widget.RecyclerView>
+    </FrameLayout>
 
     <LinearLayout
         style="?android:attr/buttonBarStyle"
