@@ -1,15 +1,15 @@
 package ru.geekbrains.meteoapp;
 
-import android.os.Build;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextClock;
 import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class DayViewAdapter extends RecyclerView.Adapter<DayViewAdapter.DayViewHolder> {
     private int numberItems;
@@ -21,20 +21,20 @@ public class DayViewAdapter extends RecyclerView.Adapter<DayViewAdapter.DayViewH
     @NonNull
     @Override
     public DayViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        int layoutIdOfListItem = R.layout.item_view_day;
+        int layoutIdForListItem = R.layout.item_view_day;
 
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
 
-        View view = inflater.inflate(layoutIdOfListItem, viewGroup, false);
+        View view = inflater.inflate(layoutIdForListItem, viewGroup, false);
 
         DayViewHolder viewHolder = new DayViewHolder(view);
+
         return viewHolder;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull DayViewHolder dayViewHolder, int i) {
-
+        dayViewHolder.build(i);
     }
 
     @Override
@@ -44,24 +44,26 @@ public class DayViewAdapter extends RecyclerView.Adapter<DayViewAdapter.DayViewH
 
     class DayViewHolder extends RecyclerView.ViewHolder {
 
-        private TextClock dataDate;
-        private TextView dayHigh;
+        private TextView dataDate;
         private TextView dayHighMeasure;
-        private TextView dayLow;
         private TextView dayLowMeasure;
-        private TextView humidity;
-        private ImageView imageConditions;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMMM");
+        Calendar calendar = new GregorianCalendar();
 
         public DayViewHolder(@NonNull View itemView) {
             super(itemView);
 
             dataDate = itemView.findViewById(R.id.dataDate);
-            dayHigh = itemView.findViewById(R.id.dataDayHigh);
             dayHighMeasure = itemView.findViewById(R.id.dataDayHighMeasure);
-            dayLow = itemView.findViewById(R.id.dataDayLow);
             dayLowMeasure = itemView.findViewById(R.id.dataDayLowMeasure);
-            humidity = itemView.findViewById(R.id.dataHumidity);
-            imageConditions = itemView.findViewById(R.id.dataImageConditions);
+        }
+
+        void build(int listIndex) {
+            calendar.roll(Calendar.DAY_OF_MONTH, listIndex);
+            String dayDate = simpleDateFormat.format(calendar.getTime());
+            dataDate.setText(dayDate);
+            dayHighMeasure.setText(itemView.getContext().getText(R.string.MEASUREMENT_CELSIUS));
+            dayLowMeasure.setText(itemView.getContext().getText(R.string.MEASUREMENT_CELSIUS));
         }
     }
 }

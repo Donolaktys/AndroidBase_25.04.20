@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity implements Constants {
     private TextView temperature;
     private TextView measure;
     private DividerItemDecoration itemDecoration;
+    private RecyclerView recyclerView;
+    private LinearLayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,10 @@ public class MainActivity extends AppCompatActivity implements Constants {
         Button weekBtn = findViewById(R.id.weekBtn);
         TextView infoLink = findViewById(R.id.infoLink);
         String link = getApplicationContext().getString(R.string.link);
+        recyclerView = findViewById(R.id.mainViewDay);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
 
         //единица измерения по умолчанию
         measure.setText(getApplicationContext().getText(R.string.MEASUREMENT_CELSIUS));
@@ -85,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements Constants {
         MakeLog.lifeCycle(getApplicationContext(), "onActivityResult");
         if (data != null) {
             if (requestCode == REQUEST_CODE_CITY) {
-                if (resultCode == RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     String city = data.getStringExtra(CITY);
                     localityChoice.setText(city);
                 }
@@ -112,18 +118,11 @@ public class MainActivity extends AppCompatActivity implements Constants {
     }
 
     private void initDayView(int numberOfDays) {
-        RecyclerView recyclerView = findViewById(R.id.mainViewDay);
-        recyclerView.setHasFixedSize(true);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
         DayViewAdapter adapter = new DayViewAdapter(numberOfDays);
         recyclerView.setAdapter(adapter);
 
-        if (itemDecoration == null) {
-            itemDecoration = new DividerItemDecoration(this,  LinearLayoutManager.VERTICAL);
-            itemDecoration.setDrawable(getDrawable(R.drawable.day_view_decorator));
-            recyclerView.addItemDecoration(itemDecoration);
-        }
+        itemDecoration = new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
+        itemDecoration.setDrawable(getDrawable(R.drawable.day_view_decorator));
+        recyclerView.addItemDecoration(itemDecoration);
     }
 }

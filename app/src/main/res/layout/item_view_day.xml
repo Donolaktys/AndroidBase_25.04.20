@@ -14,14 +14,12 @@
         android:orientation="horizontal"
         android:padding="5dp">
 
-        <TextClock
+        <TextView
             android:id="@+id/dataDate"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:gravity="center_horizontal|center_vertical"
-            android:format12Hour="MMMM dd"
-            android:format24Hour="MMMM dd" />
+            android:gravity="center_horizontal|center_vertical" />
 
 
         <ImageView
@@ -45,8 +43,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="start|center_vertical"
-            android:text="@string/MEASUREMENT_FAHRENHEIT" />
+            android:gravity="start|center_vertical" />
 
         <TextView
             android:id="@+id/dataDayLow"
@@ -61,8 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="start|center_vertical"
-            android:text="@string/MEASUREMENT_FAHRENHEIT" />
+            android:gravity="start|center_vertical" />
 
         <TextView
             android:id="@+id/dataHumidity"
