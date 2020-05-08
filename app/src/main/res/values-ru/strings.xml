@@ -26,4 +26,8 @@
     <string name="dataDayLow">19</string>
     <string name="humidity">Humidity %</string>
     <string name="dataHumidity">45</string>
+    <string name="windSpeedSnackON">Отображение скорости ветра включено</string>
+    <string name="pressureSnackON">Отображение давления включено</string>
+    <string name="windSpeedSnackOFF">Отображение скорости ветра выключено</string>
+    <string name="pressureSnackOFF">Отображение давления выключено</string>
 </resources>

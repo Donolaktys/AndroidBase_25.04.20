@@ -2,10 +2,10 @@ package ru.geekbrains.meteoapp;
 
 import android.os.Bundle;
 import android.widget.CompoundButton;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.appcompat.widget.SwitchCompat;
+
+import com.google.android.material.snackbar.Snackbar;
 
 public class SettingsActivity extends BaseActivity {
 
@@ -23,17 +23,35 @@ public class SettingsActivity extends BaseActivity {
                 recreate();
             }
         });
-    }
 
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        MakeLog.lifeCycle(this, "Сохранение данных");
-    }
+        AppCompatCheckBox cBoxWindSpeed = findViewById(R.id.cBoxWindSpeed);
+        cBoxWindSpeed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    Snackbar.make(buttonView, getApplicationContext().getString(R.string.windSpeedSnackON), Snackbar.LENGTH_SHORT)
+                            .show();
+                } else {
+                    Snackbar.make(buttonView, getApplicationContext().getString(R.string.windSpeedSnackOFF), Snackbar.LENGTH_SHORT)
+                            .show();
+                }
 
-    @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        MakeLog.lifeCycle(this, "Восстановление данных");
+            }
+        });
+
+        AppCompatCheckBox cBoxPressure = findViewById(R.id.cBoxPressure);
+        cBoxPressure.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    Snackbar.make(buttonView, getApplicationContext().getString(R.string.pressureSnackOFF), Snackbar.LENGTH_SHORT)
+                            .show();
+                } else {
+                    Snackbar.make(buttonView, getApplicationContext().getString(R.string.pressureSnackOFF), Snackbar.LENGTH_SHORT)
+                            .show();
+                }
+
+            }
+        });
     }
 }

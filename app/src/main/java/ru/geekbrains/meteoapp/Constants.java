@@ -9,4 +9,6 @@ public interface Constants {
     public final String NAME_PREFERENCE = "PREFERENCE";
     public final String IS_DARK_THEME = "IS_DARK_THEME";
     public final int SETTING_CODE = 123;
+    public final String WIND_SPEED_LABEL = "ru.geekbrains.meteoapp.settingsActivity.windSpeed";
+    public final String PRESSURE_LABEL = "ru.geekbrains.meteoapp.settingsActivity.pressure";
 }
