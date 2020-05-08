@@ -6,10 +6,14 @@
     android:layout_height="match_parent"
     android:background="@color/backGr">
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/enterLocation"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        app:hintAnimationEnabled="false"
         android:hint="@string/hintLocation"
         android:inputType="textPersonName"
         android:lines="1"
@@ -17,7 +21,7 @@
         android:singleLine="true"
         android:textColor="@color/textColor"
         android:textColorHint="@color/textColor"
-        android:background="@color/colorPrimary"
+        android:background="@color/backGr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,6 +30,8 @@
         android:id="@+id/viewCities"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
