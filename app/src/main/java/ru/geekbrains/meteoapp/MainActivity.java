@@ -49,8 +49,6 @@ public class MainActivity extends AppCompatActivity implements Constants {
         threeDaysFragment = new ThreeDaysFragment();
         weekFragment = new WeekFragment();
 
-
-
         //единица измерения по умолчанию
         measure.setText(getApplicationContext().getText(R.string.MEASUREMENT_CELSIUS));
 
