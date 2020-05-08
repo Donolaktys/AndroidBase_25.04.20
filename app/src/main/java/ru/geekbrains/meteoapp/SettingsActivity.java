@@ -1,15 +1,28 @@
 package ru.geekbrains.meteoapp;
 
 import android.os.Bundle;
+import android.widget.CompoundButton;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        SwitchCompat switchDarkTheme = findViewById(R.id.nightModeSwitch);
+        switchDarkTheme.setChecked(isDarkTheme());
+        switchDarkTheme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                setDarkTheme(isChecked);
+                recreate();
+            }
+        });
     }
 
     @Override

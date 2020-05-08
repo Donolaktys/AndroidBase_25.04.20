@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/backGr">
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/nightModeSwitch"
         android:layout_width="0dp"
         android:layout_height="50dp"

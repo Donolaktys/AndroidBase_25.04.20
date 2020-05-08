@@ -11,11 +11,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class LocationActivity extends AppCompatActivity implements Constants {
+public class LocationActivity extends BaseActivity implements Constants {
     private EditText enterLocation;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
         enterLocation = findViewById(R.id.enterLocation);
