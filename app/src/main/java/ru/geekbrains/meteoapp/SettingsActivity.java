@@ -44,7 +44,7 @@ public class SettingsActivity extends BaseActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
-                    Snackbar.make(buttonView, getApplicationContext().getString(R.string.pressureSnackOFF), Snackbar.LENGTH_SHORT)
+                    Snackbar.make(buttonView, getApplicationContext().getString(R.string.pressureSnackON), Snackbar.LENGTH_SHORT)
                             .show();
                 } else {
                     Snackbar.make(buttonView, getApplicationContext().getString(R.string.pressureSnackOFF), Snackbar.LENGTH_SHORT)
