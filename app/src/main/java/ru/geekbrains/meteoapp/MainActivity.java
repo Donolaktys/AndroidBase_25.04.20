@@ -3,20 +3,20 @@ package ru.geekbrains.meteoapp;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 
-public class MainActivity extends AppCompatActivity implements Constants {
+public class MainActivity extends BaseActivity implements Constants {
     private TextView localityChoice;
     private TextView temperature;
     private TextView measure;
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements Constants {
     private FragmentManager daysFragmentManager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -48,8 +48,6 @@ public class MainActivity extends AppCompatActivity implements Constants {
         oneDayFragment = new OneDayFragment();
         threeDaysFragment = new ThreeDaysFragment();
         weekFragment = new WeekFragment();
-
-
 
         //единица измерения по умолчанию
         measure.setText(getApplicationContext().getText(R.string.MEASUREMENT_CELSIUS));
@@ -95,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements Constants {
         settingsBtn.setOnClickListener(v -> {
             MakeLog.click(this, "\"Настройки\"");
             Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
-            startActivity(settingsIntent);
+            startActivityForResult(settingsIntent, SETTING_CODE);
         });
     }
 
@@ -109,14 +107,15 @@ public class MainActivity extends AppCompatActivity implements Constants {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         MakeLog.lifeCycle(getApplicationContext(), "onActivityResult");
-        if (data != null) {
             if (requestCode == REQUEST_CODE_CITY) {
                 if (resultCode == RESULT_OK) {
                     String city = data.getStringExtra(CITY);
                     localityChoice.setText(city);
                 }
             }
-        }
+            if (requestCode == SETTING_CODE) {
+                recreate();
+            }
     }
 
     @Override

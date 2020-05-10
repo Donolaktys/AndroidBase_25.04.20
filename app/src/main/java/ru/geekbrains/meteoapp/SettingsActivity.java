@@ -1,26 +1,57 @@
 package ru.geekbrains.meteoapp;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.widget.CompoundButton;
+import androidx.appcompat.widget.AppCompatCheckBox;
+import androidx.appcompat.widget.SwitchCompat;
 
-public class SettingsActivity extends AppCompatActivity {
+import com.google.android.material.snackbar.Snackbar;
+
+public class SettingsActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-    }
 
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        MakeLog.lifeCycle(this, "Сохранение данных");
-    }
+        SwitchCompat switchDarkTheme = findViewById(R.id.nightModeSwitch);
+        switchDarkTheme.setChecked(isDarkTheme());
+        switchDarkTheme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                setDarkTheme(isChecked);
+                recreate();
+            }
+        });
 
-    @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        MakeLog.lifeCycle(this, "Восстановление данных");
+        AppCompatCheckBox cBoxWindSpeed = findViewById(R.id.cBoxWindSpeed);
+        cBoxWindSpeed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    Snackbar.make(buttonView, getApplicationContext().getString(R.string.windSpeedSnackON), Snackbar.LENGTH_SHORT)
+                            .show();
+                } else {
+                    Snackbar.make(buttonView, getApplicationContext().getString(R.string.windSpeedSnackOFF), Snackbar.LENGTH_SHORT)
+                            .show();
+                }
+
+            }
+        });
+
+        AppCompatCheckBox cBoxPressure = findViewById(R.id.cBoxPressure);
+        cBoxPressure.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    Snackbar.make(buttonView, getApplicationContext().getString(R.string.pressureSnackOFF), Snackbar.LENGTH_SHORT)
+                            .show();
+                } else {
+                    Snackbar.make(buttonView, getApplicationContext().getString(R.string.pressureSnackOFF), Snackbar.LENGTH_SHORT)
+                            .show();
+                }
+
+            }
+        });
     }
 }

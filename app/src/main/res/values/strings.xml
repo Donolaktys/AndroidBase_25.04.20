@@ -25,4 +25,8 @@
     <string name="dataDayLow">19</string>
     <string name="humidity">Humidity %</string>
     <string name="dataHumidity">45</string>
+    <string name="windSpeedSnackON">Show wind speed</string>
+    <string name="pressureSnackON">Show pressure</string>
+    <string name="windSpeedSnackOFF">Wind speed display off</string>
+    <string name="pressureSnackOFF">Pressure display off</string>
 </resources>
