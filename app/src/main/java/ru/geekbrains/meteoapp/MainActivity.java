@@ -3,25 +3,33 @@ package ru.geekbrains.meteoapp;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 
-public class MainActivity extends AppCompatActivity implements Constants {
+public class MainActivity extends BaseActivity implements Constants {
     private TextView localityChoice;
     private TextView temperature;
     private TextView measure;
+    private DividerItemDecoration itemDecoration;
+    private RecyclerView recyclerView;
+    private LinearLayoutManager layoutManager;
     private OneDayFragment oneDayFragment;
     private ThreeDaysFragment threeDaysFragment;
     private WeekFragment weekFragment;
+    private FragmentManager daysFragmentManager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -36,12 +44,20 @@ public class MainActivity extends AppCompatActivity implements Constants {
         Button weekBtn = findViewById(R.id.weekBtn);
         TextView infoLink = findViewById(R.id.infoLink);
         String link = getApplicationContext().getString(R.string.link);
+        daysFragmentManager = getSupportFragmentManager();
         oneDayFragment = new OneDayFragment();
         threeDaysFragment = new ThreeDaysFragment();
         weekFragment = new WeekFragment();
 
         //единица измерения по умолчанию
-        measure.setText(MEASUREMENT_FAHRENHEIT);
+        measure.setText(getApplicationContext().getText(R.string.MEASUREMENT_CELSIUS));
+
+        if (savedInstanceState == null) {
+            FragmentTransaction fragmentTransaction = daysFragmentManager
+                    .beginTransaction();
+            fragmentTransaction.add(R.id.mainFragmentView, oneDayFragment);
+            fragmentTransaction.commit();
+        }
 
         //обработка нажатия кнопок на первом экране
         //
@@ -73,11 +89,11 @@ public class MainActivity extends AppCompatActivity implements Constants {
             replaceFragment(weekFragment);
         });
 
-        // нажатие на кнопку настроек, переход на экран настройки приложения
+        // нажатие на кнопку настроек, переход на экран настройки приложения*
         settingsBtn.setOnClickListener(v -> {
             MakeLog.click(this, "\"Настройки\"");
             Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
-            startActivity(settingsIntent);
+            startActivityForResult(settingsIntent, SETTING_CODE);
         });
     }
 
@@ -91,14 +107,15 @@ public class MainActivity extends AppCompatActivity implements Constants {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         MakeLog.lifeCycle(getApplicationContext(), "onActivityResult");
-        if (data != null) {
             if (requestCode == REQUEST_CODE_CITY) {
-                if (resultCode == RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     String city = data.getStringExtra(CITY);
                     localityChoice.setText(city);
                 }
             }
-        }
+            if (requestCode == SETTING_CODE) {
+                recreate();
+            }
     }
 
     @Override
@@ -118,5 +135,4 @@ public class MainActivity extends AppCompatActivity implements Constants {
         measure.setText(savedInstanceState.getString(MEASURE_LABEL));
         MakeLog.lifeCycle(this, "MAIN Восстановление данных");
     }
-
 }

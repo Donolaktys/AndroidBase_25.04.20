@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="MEASUREMENT_FAHRENHEIT">℉</string>
+    <string name="MEASUREMENT_CELSIUS">℃</string>
     <string name="app_name">Погода</string>
     <string name="localityChoice">Текущее местоположение</string>
     <string name="temperature"> T </string>
@@ -13,8 +15,19 @@
     <string name="settingsBtnDescription">Настройки</string>
     <string name="infoLink"><a>Дополнительная информация</a></string>
     <string name="link">https://ru.wikipedia.org/wiki/</string>
-
     <string name="oneDay_blank_fragment">oneDay_blank_fragment</string>
     <string name="threeDay_blank_fragment">threeDay_blank_fragment</string>
     <string name="week_blank_fragment">week_blank_fragment</string>
+    <string name="date">Date</string>
+    <string name="conditions">Conditions</string>
+    <string name="dayHigh">Day High</string>
+    <string name="dataDayHigh">28</string>
+    <string name="dayLow">Day Low</string>
+    <string name="dataDayLow">19</string>
+    <string name="humidity">Humidity %</string>
+    <string name="dataHumidity">45</string>
+    <string name="windSpeedSnackON">Отображение скорости ветра включено</string>
+    <string name="pressureSnackON">Отображение давления включено</string>
+    <string name="windSpeedSnackOFF">Отображение скорости ветра выключено</string>
+    <string name="pressureSnackOFF">Отображение давления выключено</string>
 </resources>

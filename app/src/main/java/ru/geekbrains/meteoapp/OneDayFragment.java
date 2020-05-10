@@ -1,10 +1,15 @@
 package ru.geekbrains.meteoapp;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.Objects;
 
 
 /**
@@ -12,15 +17,19 @@ import android.view.ViewGroup;
  */
 public class OneDayFragment extends Fragment {
 
-    public OneDayFragment() {
-        // Required empty public constructor
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_one_day, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_one_day, container, false);
+        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.fragmentViewOneDay);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+        DayViewAdapter adapter = new DayViewAdapter(1);
+        recyclerView.setAdapter(adapter);
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(rootView.getContext(),  LinearLayoutManager.VERTICAL);
+        itemDecoration.setDrawable(Objects.requireNonNull(rootView.getContext().getDrawable(R.drawable.day_view_decorator)));
+        recyclerView.addItemDecoration(itemDecoration);
+        return rootView;
     }
 }

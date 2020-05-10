@@ -2,20 +2,27 @@ package ru.geekbrains.meteoapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
-public class LocationActivity extends AppCompatActivity implements Constants {
+public class LocationActivity extends BaseActivity implements Constants {
     private EditText enterLocation;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
         enterLocation = findViewById(R.id.enterLocation);
+
+        String[] cities = getResources().getStringArray(R.array.cities);
+
+        initList(cities);
 
         enterLocation.setOnKeyListener((v, actionId, event) -> {
             if( event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER){
@@ -28,4 +35,24 @@ public class LocationActivity extends AppCompatActivity implements Constants {
             return false;
         });
     }
+
+    private void initList(String[] cities) {
+        RecyclerView recyclerView = findViewById(R.id.viewCities);
+
+        recyclerView.setHasFixedSize(true);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        AdapterForStringList adapter = new AdapterForStringList(cities, R.layout.item_cities);
+        recyclerView.setAdapter(adapter);
+
+        adapter.SetOnItemClickListener(new AdapterForStringList.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                enterLocation.setText(((TextView) view).getText());
+            }
+        });
+    }
+
 }
