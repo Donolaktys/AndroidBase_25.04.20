@@ -53,5 +53,14 @@ public class SettingsActivity extends BaseActivity {
 
             }
         });
+
+        AppCompatCheckBox cBoxFahrenheit = findViewById(R.id.cBoxFahrenheit);
+        cBoxFahrenheit.setChecked(isFahrenheit());
+        cBoxFahrenheit.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                setFahrenheit(isChecked);
+            }
+        });
     }
 }
