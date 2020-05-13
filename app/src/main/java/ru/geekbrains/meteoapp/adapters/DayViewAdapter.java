@@ -1,4 +1,4 @@
-package ru.geekbrains.meteoapp;
+package ru.geekbrains.meteoapp.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
+import ru.geekbrains.meteoapp.R;
 
 public class DayViewAdapter extends RecyclerView.Adapter<DayViewAdapter.DayViewHolder> {
     private int numberItems;

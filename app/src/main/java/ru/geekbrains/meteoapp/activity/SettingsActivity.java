@@ -1,4 +1,4 @@
-package ru.geekbrains.meteoapp;
+package ru.geekbrains.meteoapp.activity;
 
 import android.os.Bundle;
 import android.widget.CompoundButton;
@@ -6,6 +6,8 @@ import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.google.android.material.snackbar.Snackbar;
+
+import ru.geekbrains.meteoapp.R;
 
 public class SettingsActivity extends BaseActivity {
 

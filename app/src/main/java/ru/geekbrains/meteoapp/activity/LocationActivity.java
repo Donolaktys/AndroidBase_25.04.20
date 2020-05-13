@@ -1,15 +1,18 @@
-package ru.geekbrains.meteoapp;
+package ru.geekbrains.meteoapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import ru.geekbrains.meteoapp.Constants;
+import ru.geekbrains.meteoapp.R;
+import ru.geekbrains.meteoapp.adapters.AdapterForStringList;
 
 public class LocationActivity extends BaseActivity implements Constants {
     private EditText enterLocation;

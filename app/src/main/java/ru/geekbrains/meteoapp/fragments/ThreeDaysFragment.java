@@ -1,4 +1,4 @@
-package ru.geekbrains.meteoapp;
+package ru.geekbrains.meteoapp.fragments;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.Objects;
+
+import ru.geekbrains.meteoapp.adapters.DayViewAdapter;
+import ru.geekbrains.meteoapp.R;
 
 
 /**

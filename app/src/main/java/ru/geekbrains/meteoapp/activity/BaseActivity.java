@@ -1,4 +1,4 @@
-package ru.geekbrains.meteoapp;
+package ru.geekbrains.meteoapp.activity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import ru.geekbrains.meteoapp.Constants;
 import ru.geekbrains.meteoapp.data.Measure;
 
 public class BaseActivity extends AppCompatActivity implements Constants {

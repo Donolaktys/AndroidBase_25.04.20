@@ -1,4 +1,4 @@
-package ru.geekbrains.meteoapp;
+package ru.geekbrains.meteoapp.activity;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -17,7 +17,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ru.geekbrains.meteoapp.Constants;
+import ru.geekbrains.meteoapp.MakeLog;
+import ru.geekbrains.meteoapp.R;
+import ru.geekbrains.meteoapp.RequestBuilder;
 import ru.geekbrains.meteoapp.data.WeatherRequest;
+import ru.geekbrains.meteoapp.fragments.OneDayFragment;
+import ru.geekbrains.meteoapp.fragments.ThreeDaysFragment;
+import ru.geekbrains.meteoapp.fragments.WeekFragment;
 
 
 public class MainActivity extends BaseActivity implements Constants {
