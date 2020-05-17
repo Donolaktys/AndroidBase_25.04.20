@@ -13,7 +13,7 @@
     <string name="infoLink"><a>Дополнительная информация</a></string>
     <string name="link">https://ru.wikipedia.org/wiki/</string>
     <string name="date">Дата</string>
-    <string name="conditions">Conditions</string>
+    <string name="conditions">Погодные \nусловия</string>
     <string name="dayHigh">Максимум</string>
     <string name="dayLow">Минимум</string>
     <string name="humidity">Влажность \n%</string>

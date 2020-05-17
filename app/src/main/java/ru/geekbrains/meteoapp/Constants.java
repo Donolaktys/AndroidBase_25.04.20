@@ -16,6 +16,5 @@ public interface Constants {
     public final String WIND_SPEED_LABEL = "ru.geekbrains.meteoapp.settingsActivity.windSpeed";
     public final String PRESSURE_LABEL = "ru.geekbrains.meteoapp.settingsActivity.pressure";
     public static final String WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather?q=";
-    public static final String WEATHER_API_KEY = "762faf979c802ae5dc9e3fdad4611b05";
     public final String TAG = "WEATHER_MY";
 }

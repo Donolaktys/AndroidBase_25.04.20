@@ -11,12 +11,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.Handler;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ru.geekbrains.meteoapp.BuildConfig;
 import ru.geekbrains.meteoapp.Constants;
 import ru.geekbrains.meteoapp.MakeLog;
 import ru.geekbrains.meteoapp.R;
@@ -153,19 +153,13 @@ public class MainActivity extends BaseActivity implements Constants {
         } else {
             requestUri += "&units=metric";
         }
-        requestUri += "&APPID=" + WEATHER_API_KEY;
+        requestUri += "&APPID=" + BuildConfig.WEATHER_API_KEY;
         setRequestUri(requestUri);
     }
 
     private void initBuilder(String uri) {
-        final Handler handler = new Handler();
         final RequestBuilder requestBuilder = new RequestBuilder(new WeatherRequest(), uri);
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
                 displayWeather(requestBuilder.getWeatherRequest());
-            }
-        });
     }
 
     private void displayWeather(WeatherRequest weatherRequest) {
