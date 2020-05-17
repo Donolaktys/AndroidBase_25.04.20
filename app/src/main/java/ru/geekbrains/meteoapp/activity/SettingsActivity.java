@@ -1,4 +1,4 @@
-package ru.geekbrains.meteoapp;
+package ru.geekbrains.meteoapp.activity;
 
 import android.os.Bundle;
 import android.widget.CompoundButton;
@@ -6,6 +6,8 @@ import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.google.android.material.snackbar.Snackbar;
+
+import ru.geekbrains.meteoapp.R;
 
 public class SettingsActivity extends BaseActivity {
 
@@ -44,13 +46,22 @@ public class SettingsActivity extends BaseActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
-                    Snackbar.make(buttonView, getApplicationContext().getString(R.string.pressureSnackOFF), Snackbar.LENGTH_SHORT)
+                    Snackbar.make(buttonView, getApplicationContext().getString(R.string.pressureSnackON), Snackbar.LENGTH_SHORT)
                             .show();
                 } else {
                     Snackbar.make(buttonView, getApplicationContext().getString(R.string.pressureSnackOFF), Snackbar.LENGTH_SHORT)
                             .show();
                 }
 
+            }
+        });
+
+        AppCompatCheckBox cBoxFahrenheit = findViewById(R.id.cBoxFahrenheit);
+        cBoxFahrenheit.setChecked(isFahrenheit());
+        cBoxFahrenheit.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                setFahrenheit(isChecked);
             }
         });
     }

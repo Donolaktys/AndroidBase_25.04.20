@@ -1,4 +1,4 @@
-package ru.geekbrains.meteoapp;
+package ru.geekbrains.meteoapp.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
+import ru.geekbrains.meteoapp.R;
 
 public class DayViewAdapter extends RecyclerView.Adapter<DayViewAdapter.DayViewHolder> {
     private int numberItems;
@@ -45,25 +47,22 @@ public class DayViewAdapter extends RecyclerView.Adapter<DayViewAdapter.DayViewH
     class DayViewHolder extends RecyclerView.ViewHolder {
 
         private TextView dataDate;
-        private TextView dayHighMeasure;
-        private TextView dayLowMeasure;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMMM");
         Calendar calendar = new GregorianCalendar();
 
         public DayViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            dataDate = itemView.findViewById(R.id.dataDate);
-            dayHighMeasure = itemView.findViewById(R.id.dataDayHighMeasure);
-            dayLowMeasure = itemView.findViewById(R.id.dataDayLowMeasure);
+            init();
         }
 
         void build(int listIndex) {
             calendar.roll(Calendar.DAY_OF_MONTH, listIndex);
             String dayDate = simpleDateFormat.format(calendar.getTime());
             dataDate.setText(dayDate);
-            dayHighMeasure.setText(itemView.getContext().getText(R.string.MEASUREMENT_CELSIUS));
-            dayLowMeasure.setText(itemView.getContext().getText(R.string.MEASUREMENT_CELSIUS));
+        }
+
+        void init() {
+            dataDate = itemView.findViewById(R.id.dataDate);
         }
     }
 }

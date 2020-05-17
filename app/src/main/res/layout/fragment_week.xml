@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/backGr"
-    tools:context=".WeekFragment"
+    tools:context=".fragments.WeekFragment"
     tools:listitem="@layout/item_view_day">
 
 </androidx.recyclerview.widget.RecyclerView>

@@ -1,4 +1,4 @@
-package ru.geekbrains.meteoapp;
+package ru.geekbrains.meteoapp.fragments;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -11,11 +11,14 @@ import android.view.ViewGroup;
 
 import java.util.Objects;
 
+import ru.geekbrains.meteoapp.adapters.DayViewAdapter;
+import ru.geekbrains.meteoapp.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WeekFragment extends Fragment {
+public class ThreeDaysFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,7 +28,7 @@ public class WeekFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        DayViewAdapter adapter = new DayViewAdapter(7);
+        DayViewAdapter adapter = new DayViewAdapter(3);
         recyclerView.setAdapter(adapter);
         DividerItemDecoration itemDecoration = new DividerItemDecoration(rootView.getContext(),  LinearLayoutManager.VERTICAL);
         itemDecoration.setDrawable(Objects.requireNonNull(rootView.getContext().getDrawable(R.drawable.day_view_decorator)));
