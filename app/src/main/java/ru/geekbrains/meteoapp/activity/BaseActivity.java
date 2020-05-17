@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import ru.geekbrains.meteoapp.Constants;
 import ru.geekbrains.meteoapp.data.Measure;
 
+
 public class BaseActivity extends AppCompatActivity implements Constants {
     private Measure measurement;
     private String requestUri;
@@ -22,14 +23,14 @@ public class BaseActivity extends AppCompatActivity implements Constants {
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
-
-        measurement = new Measure();
+        if (measurement == null) {
+            measurement = new Measure();
+        }
         if (isFahrenheit()) {
             measurement.setMeasure(MEASUREMENT_FAHRENHEIT);
         } else {
             measurement.setMeasure(MEASUREMENT_CELSIUS);
         }
-
     }
 
     protected boolean isDarkTheme() {
@@ -47,7 +48,6 @@ public class BaseActivity extends AppCompatActivity implements Constants {
 
     protected boolean isFahrenheit() {
         SharedPreferences sharedPreferences = getSharedPreferences(NAME_PREFERENCE_MEASURE, MODE_PRIVATE);
-
         return sharedPreferences.getBoolean(MEASURE_MODE, false);
     }
 

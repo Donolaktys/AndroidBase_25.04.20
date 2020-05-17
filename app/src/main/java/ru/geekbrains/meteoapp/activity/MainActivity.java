@@ -132,6 +132,7 @@ public class MainActivity extends BaseActivity implements Constants {
         }
         if (requestCode == SETTING_CODE) {
 
+            recreate();
             if (isFahrenheit()) {
                 measure.setText(MEASUREMENT_FAHRENHEIT);
 
@@ -142,7 +143,7 @@ public class MainActivity extends BaseActivity implements Constants {
                 uriBuild(localityChoice.getText().toString());
                 initBuilder(getRequestUri());
             }
-            recreate();
+
         }
     }
 
