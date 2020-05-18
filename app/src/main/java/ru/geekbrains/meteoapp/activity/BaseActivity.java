@@ -2,6 +2,7 @@ package ru.geekbrains.meteoapp.activity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.ArrayMap;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,27 +10,51 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import ru.geekbrains.meteoapp.Constants;
 import ru.geekbrains.meteoapp.data.Measure;
+import ru.geekbrains.meteoapp.data.SearchHistory;
 
 
 public class BaseActivity extends AppCompatActivity implements Constants {
     private Measure measurement;
     private String requestUri;
+    private SearchHistory searchHistory;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme();
+        initMeasure();
+        setMeasure();
+        initHistory();
+    }
+
+    private void setMeasure() {
+        if (isFahrenheit()) {
+            measurement.setMeasure(MEASUREMENT_FAHRENHEIT);
+        } else {
+            measurement.setMeasure(MEASUREMENT_CELSIUS);
+        }
+    }
+
+    private void setTheme() {
         if (isDarkTheme()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
+    }
+
+    private void initMeasure() {
         if (measurement == null) {
             measurement = new Measure();
         }
-        if (isFahrenheit()) {
-            measurement.setMeasure(MEASUREMENT_FAHRENHEIT);
-        } else {
-            measurement.setMeasure(MEASUREMENT_CELSIUS);
+    }
+
+    private void initHistory() {
+        if (searchHistory == null) {
+            searchHistory = new SearchHistory();
+            ArrayMap<String, String> historyMap = new ArrayMap<>();
+            searchHistory.setSearchHistory(historyMap);
+            searchHistory.getSearchHistory().put("Moscow", "n/a");
         }
     }
 
@@ -68,5 +93,13 @@ public class BaseActivity extends AppCompatActivity implements Constants {
 
     public void setRequestUri(String requestUri) {
         this.requestUri = requestUri;
+    }
+
+    public void putSearchHistory(String city, String temp) {
+        searchHistory.getSearchHistory().put(city, temp);
+    }
+
+    public SearchHistory getSearchHistory() {
+        return searchHistory;
     }
 }

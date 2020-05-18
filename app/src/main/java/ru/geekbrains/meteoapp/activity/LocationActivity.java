@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.ArrayMap;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -13,6 +15,8 @@ import android.widget.TextView;
 import ru.geekbrains.meteoapp.Constants;
 import ru.geekbrains.meteoapp.R;
 import ru.geekbrains.meteoapp.adapters.AdapterForStringList;
+import ru.geekbrains.meteoapp.adapters.SearchHistoryAdapter;
+import ru.geekbrains.meteoapp.data.SearchHistory;
 
 public class LocationActivity extends BaseActivity implements Constants {
     private EditText enterLocation;
@@ -23,9 +27,7 @@ public class LocationActivity extends BaseActivity implements Constants {
         setContentView(R.layout.activity_location);
         enterLocation = findViewById(R.id.enterLocation);
 
-        String[] cities = getResources().getStringArray(R.array.cities);
-
-        initList(cities);
+        initList(getSearchHistory());
 
         enterLocation.setOnKeyListener((v, actionId, event) -> {
             if( event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER){
@@ -39,7 +41,7 @@ public class LocationActivity extends BaseActivity implements Constants {
         });
     }
 
-    private void initList(String[] cities) {
+    private void initList(SearchHistory searchHistory) {
         RecyclerView recyclerView = findViewById(R.id.viewCities);
 
         recyclerView.setHasFixedSize(true);
@@ -47,15 +49,8 @@ public class LocationActivity extends BaseActivity implements Constants {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        AdapterForStringList adapter = new AdapterForStringList(cities, R.layout.item_cities);
+        SearchHistoryAdapter adapter = new SearchHistoryAdapter(searchHistory, getMeasure());
         recyclerView.setAdapter(adapter);
-
-        adapter.SetOnItemClickListener(new AdapterForStringList.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                enterLocation.setText(((TextView) view).getText());
-            }
-        });
     }
 
 }

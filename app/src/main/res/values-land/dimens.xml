@@ -5,4 +5,5 @@
     <dimen name="measure">35sp</dimen>
     <dimen name="fragment">50sp</dimen>
     <dimen name="sizeItemCity">30sp</dimen>
+    <dimen name="sizeItemCityTemp">30sp</dimen>
 </resources>

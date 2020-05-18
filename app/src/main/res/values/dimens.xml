@@ -6,4 +6,5 @@
     <dimen name="fragment">37sp</dimen>
     <dimen name="sizeItemCity">30sp</dimen>
     <dimen name="sizeItemViewDay">30sp</dimen>
+    <dimen name="sizeItemCityTemp">30sp</dimen>
 </resources>
