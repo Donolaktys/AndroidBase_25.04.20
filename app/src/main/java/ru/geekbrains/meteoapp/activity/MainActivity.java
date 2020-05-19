@@ -55,12 +55,7 @@ public class MainActivity extends BaseActivity implements Constants {
 
         init();
 
-        if (savedInstanceState == null) {
-            FragmentTransaction fragmentTransaction = daysFragmentManager
-                    .beginTransaction();
-            fragmentTransaction.add(R.id.mainFragmentView, oneDayFragment);
-            fragmentTransaction.commit();
-        }
+        addFirstFragment(savedInstanceState);
 
         localityChoice.setOnClickListener(v -> {
             Intent locationIntent = new Intent(MainActivity.this, LocationActivity.class);
@@ -89,6 +84,15 @@ public class MainActivity extends BaseActivity implements Constants {
             Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivityForResult(settingsIntent, SETTING_CODE);
         });
+    }
+
+    private void addFirstFragment(Bundle savedInstanceState) {
+        if (savedInstanceState == null) {
+            FragmentTransaction fragmentTransaction = daysFragmentManager
+                    .beginTransaction();
+            fragmentTransaction.add(R.id.mainFragmentView, oneDayFragment);
+            fragmentTransaction.commit();
+        }
     }
 
     private void init() {
@@ -128,6 +132,7 @@ public class MainActivity extends BaseActivity implements Constants {
                 localityChoice.setText(city);
                 uriBuild(city);
                 initBuilder(getRequestUri());
+                putSearchHistory(city, temperature.getText().toString());
             }
         }
         if (requestCode == SETTING_CODE) {
@@ -160,7 +165,7 @@ public class MainActivity extends BaseActivity implements Constants {
 
     private void initBuilder(String uri) {
         final RequestBuilder requestBuilder = new RequestBuilder(new WeatherRequest(), uri);
-                displayWeather(requestBuilder.getWeatherRequest());
+        displayWeather(requestBuilder.getWeatherRequest());
     }
 
     private void displayWeather(WeatherRequest weatherRequest) {
